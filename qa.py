@@ -15,7 +15,6 @@ API_KEY = os.getenv("GOOGLE_API_KEY")
 if not API_KEY:
     raise ValueError("GOOGLE_API_KEY environment variable is not set. Please set it and try again.")
 
-
 # LLM Configuration
 generation_config = {
     "temperature": 0.5,
@@ -83,7 +82,6 @@ rag_application = gr.Interface(
     description="Upload a document (PDF, DOCX, TXT) and ask any question. The chatbot will answer using the document's content.",
     article="© 2025 by AbuBakar Shahzad | All Rights Reserved"
 )
-
 
 
 port = int(os.getenv("PORT", "7862"))
