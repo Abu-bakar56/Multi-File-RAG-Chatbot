@@ -45,10 +45,28 @@ def text_splitter(data):
     splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=50)
     return splitter.split_documents(data)
 
-# Vector Database
+# # Vector Database
+# def vector_database(chunks):
+#     embedding_model = google_gemini_embedding()
+#     return Chroma.from_documents(chunks, embedding_model)
+
+import chromadb
+from chromadb.config import Settings
+
 def vector_database(chunks):
     embedding_model = google_gemini_embedding()
-    return Chroma.from_documents(chunks, embedding_model)
+    
+    # Use a PostgreSQL database for ChromaDB on Render
+    CHROMA_DB_URL = "postgresql://postgresql_in2c_user:dcMBPqbS0y7WRMrLos25SfeZ9yNv9Yqw@dpg-cv6t4iaj1k6c73e7o3o0-a/postgresql_in2c"
+    
+
+    client = chromadb.PersistentClient(
+        path=CHROMA_DB_URL, 
+        settings=Settings(anonymized_telemetry=False)  # Disable telemetry for privacy
+    )
+
+    return client.get_or_create_collection("my_collection")
+
 
 # Retriever
 def retriever(file):
