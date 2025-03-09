@@ -159,22 +159,22 @@ def text_splitter(data):
     splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=50)
     return splitter.split_documents(data)
 
-# Vector Database with PostgreSQL (ChromaDB)
+# Vector Database with ChromaDB + PostgreSQL
 def vector_database(chunks):
     embedding_model = google_gemini_embedding()
-    
-    # PostgreSQL Database for ChromaDB
+
+    # PostgreSQL Database URL for ChromaDB
     CHROMA_DB_URL = "postgresql://postgresql_in2c_user:dcMBPqbS0y7WRMrLos25SfeZ9yNv9Yqw@dpg-cv6t4iaj1k6c73e7o3o0-a/postgresql_in2c"
     
-    client = chromadb.PersistentClient(
-        path=CHROMA_DB_URL, 
-        settings=Settings(anonymized_telemetry=False, database_impl="pgvector")  # Enable PostgreSQL-based vector storage
+    # Create ChromaDB instance with PostgreSQL
+    vectordb = Chroma.from_documents(
+        documents=chunks,
+        embedding=embedding_model,
+        persist_directory=CHROMA_DB_URL  # Use PostgreSQL instead of local storage
     )
-
-    collection = client.get_or_create_collection("my_collection")
-    collection.add_documents(chunks, embedding_function=embedding_model)
     
-    return collection
+    return vectordb
+
 
 # Retriever
 def retriever(file_path):
