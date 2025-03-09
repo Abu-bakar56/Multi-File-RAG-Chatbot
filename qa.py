@@ -80,7 +80,8 @@ rag_application = gr.Interface(
     ],
     outputs=gr.Textbox(label="Output"),
     title="RAG Chatbot",
-    description="Upload a document (PDF, DOCX, TXT) and ask any question. The chatbot will answer using the document's content."
+    description="Upload a document (PDF, DOCX, TXT) and ask any question. The chatbot will answer using the document's content.",
+    article="© 2025 by AbuBakar Shahzad | All Rights Reserved"
 )
 
 
