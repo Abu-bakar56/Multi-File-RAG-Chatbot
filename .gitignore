@@ -1,0 +1,13 @@
+# Ignore environment files
+.env
+
+# Ignore flagged files
+flagged.txt
+log.csv
+
+# Ignore flagged directories
+flagged/
+.gradio/
+C:/Users/MCS/OneDrive/Desktop/chatbot project/flagged/
+
+my_env
