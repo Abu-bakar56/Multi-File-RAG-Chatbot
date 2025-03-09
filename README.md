@@ -52,19 +52,20 @@ GOOGLE_API_KEY=your_api_key_here
 
 Run the chatbot with:
 ```sh
-python app.py
+python qa.py
 ```
 Then, open **http://127.0.0.1:7862/** in your browser and start chatting with your documents!
 
 ---
 
 ## 🎨 Preview
-![Chatbot UI Preview](preview-image.png)  
+ ![rd](https://github.com/user-attachments/assets/fcaf7fc4-f730-44fb-ac62-cce162ee3b5e)
+
 
 ---
 
 ## 🔗 Live Demo 🌐
-🚀 Try it out here: **[Live Demo](https://your-live-demo-link.com)**
+🚀 Try it out here: **[Live Demo](https://multi-file-rag-chatbot.onrender.com/)**
 
 ---
 
